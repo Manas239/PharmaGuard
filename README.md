@@ -21,3 +21,6 @@ npm run dev
 ```
 
 The frontend proxies `/api` to `http://localhost:5000` for convenience. The backend currently returns a static mock response in `backend/mock_response.json`. Replace the mock in `routes/analyze.js` with an HTTP call to your Python LLM service at `http://localhost:8000/analyze` when ready.
+
+
+Live Link : https://pharma-ai-nu.vercel.app/
