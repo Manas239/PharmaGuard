@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import json
 import os
 import tempfile
@@ -7,6 +8,7 @@ from werkzeug.utils import secure_filename
 from pipeline import run_pipeline_multi
 
 app = Flask(__name__)
+CORS(app)
 
 app.config["MAX_CONTENT_LENGTH"] = int(os.getenv("MAX_CONTENT_LENGTH", str(5 * 1024 * 1024)))
 

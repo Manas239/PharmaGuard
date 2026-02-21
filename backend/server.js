@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const path = require('path')
 const fs = require('fs')
+// load environment variables from .env if present
+require('dotenv').config()
 const app = express()
 
 function loadDotEnv() {
@@ -25,7 +27,7 @@ function loadDotEnv() {
   }
 }
 
-loadDotEnv()
+// legacy loader kept for compatibility if present; dotenv already loaded above
 
 const analyzeRoute = require('./routes/analyze')
 const chatRoute = require('./routes/chat')
@@ -79,6 +81,16 @@ app.delete('/api/logs', (req, res) => {
 
 app.use('/api', analyzeRoute)
 app.use('/api', chatRoute)
+
+// health check
+app.get('/health', (req, res) => res.json({ status: 'ok' }))
+
+// Basic error-handling middleware (must be after routes)
+app.use((err, req, res, next) => {
+  console.error('Unhandled error:', err)
+  if (res.headersSent) return next(err)
+  res.status(err.status || 500).json({ success: false, error_type: 'INTERNAL', message: err.message || 'Internal Server Error' })
+})
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Backend listening on ${PORT}`))

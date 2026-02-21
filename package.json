@@ -1,0 +1,12 @@
+{
+  "name": "pharmaguard-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\" \"node tools/run_ml.js\"",
+    "start": "node backend/server.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}

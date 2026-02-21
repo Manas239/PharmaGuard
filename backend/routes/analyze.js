@@ -12,7 +12,7 @@ const FormData = require('form-data');
 
 
 
-const PYTHON_BACKEND_URL = process.env.PYTHON_BACKEND_URL || ''
+const PYTHON_BACKEND_URL = process.env.PYTHON_BACKEND_URL || 'http://localhost:8000/predict'
 
 const PYTHON_VALIDATOR_URL = process.env.PYTHON_VALIDATOR_URL || ''
 
