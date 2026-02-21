@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\" \"node tools/run_ml.js\"",
-    "start": "node backend/server.js"
+    "setup": "bash setup.sh || call setup.bat",
+    "dev": "bash start.sh || call start.bat",
+    "start": "node backend/server.js",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "ml": "cd pharma_ml && source venv/bin/activate && uvicorn main:app --reload || cd pharma_ml && venv\\Scripts\\activate.bat && uvicorn main:app --reload"
   },
   "devDependencies": {
     "concurrently": "^8.0.1"
