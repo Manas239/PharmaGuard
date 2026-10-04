@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PharmaGuard Project Report</title>
+  <style>
+    :root {
+      --bg: #f4f9f7;
+      --paper: #ffffff;
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --primary-soft: #dff8f1;
+      --accent: #15803d;
+      --ink: #10242d;
+      --muted: #5f6f78;
+      --line: #dfe9e6;
+      --warning: #9a5d00;
+      --danger: #9f1239;
+      --shadow: 0 12px 28px rgba(15, 118, 110, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #eefaf5 0%, #f7fbfb 100%);
+      color: var(--ink);
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      padding: 48px 52px 32px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 42px;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+      font-size: 13px;
+      opacity: 0.92;
+    }
+
+    .meta span {
+      background: rgba(255,255,255,0.12);
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .content {
+      padding: 36px 52px 52px;
+    }
+
+    .toc {
+      border: 1px solid var(--line);
+      background: #f9fdfc;
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 28px;
+    }
+
+    .toc h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: var(--primary-dark);
+    }
+
+    .toc ul {
+      margin: 0;
+      padding-left: 22px;
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    .section {
+      margin-top: 28px;
+      page-break-inside: avoid;
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 26px;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--primary-soft);
+      padding-bottom: 8px;
+    }
+
+    .section h3 {
+      margin: 20px 0 10px;
+      font-size: 18px;
+      color: var(--ink);
+    }
+
+    p, li {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--ink);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fbfefd;
+      padding: 18px 20px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: var(--primary-dark);
+    }
+
+    .pill {
+      display: inline-block;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-weight: 700;
+      font-size: 12px;
+      margin: 4px 6px 4px 0;
+    }
+
+    .highlight {
+      background: #fff9d9;
+      border-left: 4px solid #d4a72c;
+      padding: 12px 14px;
+      border-radius: 10px;
+      color: #4a3b07;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+
+    .qa {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fbfffd;
+      padding: 18px 20px;
+      margin-top: 10px;
+    }
+
+    .qa strong {
+      color: var(--primary-dark);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px 24px 30px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--line);
+      background: #fbfefd;
+    }
+
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+      .header, .content { padding-left: 24px; padding-right: 24px; }
+      .header h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>PharmaGuard</h1>
+      <div class="subtitle">Pharmacogenomics Drug Safety Analysis Platform</div>
+      <div class="meta">
+        <span>Project Type: Hackathon Demo</span>
+        <span>Frontend: React + Vite + Tailwind</span>
+        <span>Backend: Node.js + Express</span>
+        <span>Core Purpose: VCF-based drug safety analysis</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+          <li>1. Project Overview</li>
+          <li>2. Problem Statement and Business Value</li>
+          <li>3. Tech Stack and Architecture</li>
+          <li>4. System Workflow</li>
+          <li>5. Main Features</li>
+          <li>6. Data Flow and Logic</li>
+          <li>7. Key Repository Structure</li>
+          <li>8. Strengths and Limitations</li>
+          <li>9. Interview Questions with Answers</li>
+          <li>10. Conclusion</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>1. Project Overview</h2>
+        <p>
+          PharmaGuard is a clinical pharmacogenomics web application designed to help users upload a genomic VCF file and evaluate the risk of selected drugs based on genetic variations. The project is built as a hackathon-style demo that combines a modern web frontend with a backend service layer that prepares and validates the input, calls an ML / Python analysis backend when available, and gracefully falls back to mock clinical data.
+        </p>
+        <p>
+          The core idea is simple but powerful: if a patient has gene variants that affect drug metabolism, the system can identify whether a drug may be ineffective, requires dose adjustment, or may be toxic. This is highly relevant in personalized medicine, especially for drugs influenced by genes such as CYP2C19, CYP2C9, CYP2D6, TPMT, DPYD, and SLCO1B1.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>2. Problem Statement and Business Value</h2>
+        <p>
+          In real clinical practice, patients respond differently to the same drug due to pharmacogenomic variation. Standard treatment often ignores this factor and can lead to ineffective therapy or harmful side effects. PharmaGuard addresses this by making pharmacogenomic decision support easier to understand and more usable for clinicians, researchers, and developers.
+        </p>
+        <div class="highlight">
+          The software brings together VCF input, drug selection, risk analysis, clinical guidance, and conversational explanation in one user-friendly workflow.
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Business Impact</h3>
+            <ul>
+              <li>Improves patient safety through better drug matching</li>
+              <li>Helps clinicians personalize treatment plans</li>
+              <li>Reduces drug-related adverse events</li>
+              <li>Supports educational and prototype use in genomics labs</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Target Use Case</h3>
+            <ul>
+              <li>VCF genomic file upload</li>
+              <li>Drug list selection for analysis</li>
+              <li>Clinical report generation</li>
+              <li>AI-based explanation via chat</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>3. Tech Stack and Architecture</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Frontend</h3>
+            <ul>
+              <li>React 18</li>
+              <li>Vite</li>
+              <li>Tailwind CSS</li>
+              <li>React Router</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Backend</h3>
+            <ul>
+              <li>Node.js</li>
+              <li>Express</li>
+              <li>Multer for file upload handling</li>
+              <li>Axios for API forwarding</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Core Architecture</h3>
+        <p>
+          The application follows a three-layer structure: frontend UI, Node-based API server, and optional Python-based analysis backend. The backend receives multipart form submissions containing a VCF file and selected drugs. It validates the file, optionally forwards the request to Python ML services, and finally returns risk analysis results or a mock response for demo purposes.
+        </p>
+
+        <div class="card" style="margin-top:16px;">
+          <h3>Technology Summary</h3>
+          <div>
+            <span class="pill">React</span>
+            <span class="pill">Tailwind</span>
+            <span class="pill">Express</span>
+            <span class="pill">Multer</span>
+            <span class="pill">Axios</span>
+            <span class="pill">Groq API</span>
+            <span class="pill">VCF Validation</span>
+            <span class="pill">Pharmacogenomics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>4. System Workflow</h2>
+        <p>
+          The end-to-end workflow is clear and user-friendly. The user uploads a VCF file, enters or selects drugs, and triggers analysis. The backend validates extension and file size, generates a patient payload, and either forwards it to a Python engine or uses a predefined mock response. The frontend displays structured results, including risk label, confidence score, severity, dosage guidance, and gene-level clinical context.
+        </p>
+        <ol>
+          <li>User uploads a .vcf file in the frontend.</li>
+          <li>Frontend sends a multipart request to /api/analyze.</li>
+          <li>Backend validates the file and required drugs.</li>
+          <li>Optional Python validator runs to confirm the VCF format.</li>
+          <li>Analysis is forwarded to a Python backend if configured.</li>
+          <li>Mock or real results are normalized and displayed.</li>
+          <li>AI chat answers follow-up questions using the generated report context.</li>
+        </ol>
+      </div>
+
+      <div class="section">
+        <h2>5. Main Features</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Core Features</h3>
+            <ul>
+              <li>VCF file upload with validation</li>
+              <li>Drug selection for pharmacogenomics testing</li>
+              <li>Risk assessment for multiple drugs</li>
+              <li>Confidence scoring and severity tagging</li>
+              <li>Clinical dosage/recommendation output</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Intelligent Add-ons</h3>
+            <ul>
+              <li>Groq-powered Q&amp;A about reports</li>
+              <li>Session history in local storage</li>
+              <li>Mock response fallback for demo mode</li>
+              <li>Analysis log persistence in JSON</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>6. Data Flow and Logic</h2>
+        <p>
+          The backend organizes the flow around two significant concerns: file validation and result shaping. In the analysis route, it reads the uploaded VCF file, ensures the file extension is valid, checks file size, and extracts user-selected drugs from the request. It then prepares a payload to send to the Python service or falls back to canned JSON that mimics a drug safety report.
+        </p>
+        <p>
+          Each result object contains information such as patient ID, drug name, timestamp, risk label, confidence score, gene profile, phenotype, and clinical recommendation. This structured data is later consumed by the frontend ResultsPanel and the AI chat system.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>7. Key Repository Structure</h2>
+        <p>The project’s folder layout clearly separates frontend and backend responsibilities:</p>
+        <ul>
+          <li><strong>backend/</strong> — Express server, API routes, upload handling, validation, logs, and mock population</li>
+          <li><strong>frontend/</strong> — React UI, dashboard, Vite config, styling, and drug analysis views</li>
+          <li><strong>README.md</strong> — startup and project summary</li>
+          <li><strong>backend/mock_response.json</strong> — simulated clinical analysis output</li>
+          <li><strong>backend/routes/chat.js</strong> — Q&amp;A integration with Groq</li>
+          <li><strong>frontend/src/pages/Dashboard.jsx</strong> — main interactive patient analysis workflow</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>8. Strengths and Limitations</h2>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Strengths</h3>
+            <ul>
+              <li>Clear modern UI</li>
+              <li>Strong demo experience for a hackathon</li>
+              <li>Good separation of frontend and backend</li>
+              <li>Practical clinical narrative and risk labels</li>
+              <li>AI-based follow-up interaction improves usability</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Limitations</h3>
+            <ul>
+              <li>Current project relies heavily on mock data in demo mode</li>
+              <li>Real VCF variant interpretation is not fully implemented in the repo itself</li>
+              <li>Python backend is optional and must be configured externally</li>
+              <li>Clinical output should be treated as educational prototype information, not final medical advice</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>9. Interview Questions with Answers</h2>
+
+        <div class="qa">
+          <p><strong>Q1:</strong> What problem does PharmaGuard solve?</p>
+          <p><strong>A:</strong> PharmaGuard solves the challenge of matching a patient’s genomic profile to drug safety and dosage recommendations. It helps detect cases where a drug may be ineffective, toxic, or require dose reduction based on genetic variation.</p>
+        </div>
+
+        <div class="qa">
+          <p><strong>Q2:</strong> Why is VCF validation important in this project?</p>
+          <p><strong>A:</strong> VCF validation is essential because genomic data is sensitive and must follow a valid structure. If the file is malformed, corrupted, too large, or wrong type, the system rejects the request before analysis. This ensures reliability and prevents inaccurate clinical interpretation.</p>
+        </div>
+
+        <div class="qa">
+          <p><strong>Q3:</strong> What is the role of the backend in this architecture?</p>
+          <p><strong>A:</strong> The backend acts as the orchestration layer. It validates requests, stores logs, forwards data to external Python services, handles error recovery, and ensures that the frontend receives a consistent response structure.</p>
+        </div>
+
+        <div class="qa">
+          <p><strong>Q4:</strong> Why is this project relevant in personalized medicine?</p>
+          <p><strong>A:</strong> Because different patients can metabolize the same drug very differently depending on genetic variants. The project reflects how pharmacogenomics can create safer, more personalized clinical decisions, especially with commonly tested genes like CYP2C19 and TPMT.</p>
+        </div>
+
+        <div class="qa">
+          <p><strong>Q5:</strong> What is the purpose of the Groq chat integration?</p>
+          <p><strong>A:</strong> The chat feature is used to answer natural-language questions about the generated reports. It grounds the response in the analysis results so the user can ask follow-up questions like dose adjustment, gene impact, or toxicity explanation.</p>
+        </div>
+
+        <div class="qa">
+          <p><strong>Q6:</strong> What are the biggest opportunities for future improvement?</p>
+          <p><strong>A:</strong> The most important next step is to connect the system to a real pharmacogenomics engine that parses actual VCF variant annotations. Another improvement is to build stronger clinical validation rules, integrate database-backed patient histories, and add secure authentication for healthcare use.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>10. Conclusion</h2>
+        <p>
+          PharmaGuard is a well-structured and highly relevant project that combines modern web development with clinical decision support. It is more than just a dashboard; it is a prototype for how genomic data can be transformed into understandable drug safety guidance. The system is especially impressive because it blends backend validation, external service integration, user interaction, and AI-assisted explanation into a single workflow.
+        </p>
+        <p>
+          Even though it is clearly positioned as a hackathon/demo project, the architecture is practical and extensible. With a real Python pharmacogenomics engine and additional clinical validation, the project could evolve into a serious healthcare technology solution.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      PharmaGuard Project Report | Prepared as a print-ready presentation document
+    </div>
+  </div>
+</body>
+</html>
