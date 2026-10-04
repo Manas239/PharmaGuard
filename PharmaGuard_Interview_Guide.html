@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaGuard - Complete Interview Preparation Guide</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #134e4a;
+      --primary-light: #d5f4e6;
+      --accent: #16a34a;
+      --bg: #f8fafb;
+      --paper: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px rgba(0,0,0,0.1);
+      --warning-bg: #fffbeb;
+      --success-bg: #ecfdf5;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background: linear-gradient(135deg, #f0faf8 0%, #f9fafb 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.1em;
+      opacity: 0.95;
+    }
+
+    .toc-box {
+      background: var(--paper);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .toc-box h2 {
+      color: var(--primary-dark);
+      margin-bottom: 15px;
+      font-size: 1.5em;
+      border-bottom: 3px solid var(--primary-light);
+      padding-bottom: 10px;
+    }
+
+    .toc-box ol {
+      list-style-position: inside;
+      margin-left: 0;
+    }
+
+    .toc-box li {
+      margin: 8px 0;
+      color: var(--text);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .toc-box li:hover {
+      background: var(--primary-light);
+      padding-left: 15px;
+    }
+
+    .section {
+      background: var(--paper);
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      border-left: 5px solid var(--primary);
+    }
+
+    .section h2 {
+      color: var(--primary-dark);
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section h3 {
+      color: var(--primary);
+      font-size: 1.3em;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      color: var(--text);
+      margin: 12px 0;
+      line-height: 1.8;
+    }
+
+    .section ul, .section ol {
+      margin: 15px 0 15px 25px;
+    }
+
+    .section li {
+      margin: 8px 0;
+      color: var(--text);
+    }
+
+    .quick-box {
+      background: var(--warning-bg);
+      border-left: 4px solid #f59e0b;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+
+    .success-box {
+      background: var(--success-bg);
+      border-left: 4px solid var(--accent);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+
+    .qa-block {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 15px 0;
+      border-left: 4px solid var(--accent);
+    }
+
+    .qa-block strong {
+      color: var(--primary-dark);
+      font-size: 1.1em;
+    }
+
+    .qa-block p {
+      margin: 10px 0;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    table th {
+      background: var(--primary);
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table tr:hover {
+      background: var(--primary-light);
+    }
+
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      line-height: 1.5;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 20px 0;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(15, 118, 110, 0.3);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      border-top: 2px solid var(--border);
+      margin-top: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 15px 0;
+    }
+
+    .card {
+      background: var(--primary-light);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .card h4 {
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      margin-left: 20px;
+    }
+
+    .card li {
+      margin: 6px 0;
+    }
+
+    .architecture {
+      background: #f1f5f9;
+      border: 2px dashed var(--border);
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    .tips-section {
+      background: #fef3c7;
+      border-left: 4px solid #d97706;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .tips-section h3 {
+      color: #92400e;
+    }
+
+    .tips-section ul {
+      margin-left: 20px;
+    }
+
+    .tips-section li {
+      margin: 8px 0;
+      color: #78350f;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header {
+        padding: 25px;
+      }
+
+      .header h1 {
+        font-size: 1.8em;
+      }
+
+      .section {
+        padding: 20px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .section {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid var(--border);
+      }
+
+      .download-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎓 PharmaGuard - Complete Interview Preparation Guide</h1>
+      <p>Master everything about the project and ace your interview</p>
+    </div>
+
+    <div class="toc-box">
+      <h2>📋 Table of Contents</h2>
+      <ol>
+        <li>Quick Overview (30 Seconds)</li>
+        <li>Part 1: Project Understanding</li>
+        <li>Part 2: Architecture & How It Works</li>
+        <li>Part 3: Key Implementation Details</li>
+        <li>Part 4: Frontend Understanding</li>
+        <li>Part 5: Common Interview Questions & Answers</li>
+        <li>Part 6: Technical Depth Questions</li>
+        <li>Part 7: Quick Reference Cheat Sheet</li>
+        <li>Part 8: Explanation Scenarios</li>
+        <li>Part 9: Final Interview Tips</li>
+      </ol>
+    </div>
+
+    <!-- Section 1: Quick Overview -->
+    <div class="section">
+      <h2>⚡ Quick Overview (30 Seconds)</h2>
+      <h3>What is PharmaGuard?</h3>
+      <p><strong>PharmaGuard</strong> is a web-based pharmacogenomics platform that analyzes how a patient's genetic profile affects drug safety and effectiveness. Users upload a VCF genomic file, select drugs for analysis, and receive personalized risk assessments with AI-powered explanations.</p>
+      <div class="quick-box">
+        <strong>💡 Remember:</strong> It's about matching genes to drugs safely. Same medicine, different genes = different outcomes.
+      </div>
+    </div>
+
+    <!-- Section 2: Project Understanding -->
+    <div class="section">
+      <h2>📚 Part 1: Project Understanding (What You MUST Know)</h2>
+      
+      <h3>1.1 Core Problem It Solves</h3>
+      <ul>
+        <li><strong>Issue:</strong> People respond differently to the same drug because of genetic differences</li>
+        <li><strong>Real Impact:</strong> Same medicine can be ineffective, require dose reduction, or be toxic based on genes</li>
+        <li><strong>Solution:</strong> PharmaGuard identifies these risks by analyzing VCF files against drug databases</li>
+      </ul>
+
+      <h3>1.2 Key Genes & Drugs (Know These)</h3>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Gene</th>
+              <th>Effect</th>
+              <th>Example Drug</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CYP2C19</td>
+              <td>Drug metabolism</td>
+              <td>Clopidogrel (poor metabolizer = ineffective)</td>
+            </tr>
+            <tr>
+              <td>CYP2C9</td>
+              <td>Warfarin metabolism</td>
+              <td>Warfarin (slow metabolizer = bleeding risk)</td>
+            </tr>
+            <tr>
+              <td>CYP2D6</td>
+              <td>Opioid metabolism</td>
+              <td>Codeine (poor metabolizer = no pain relief)</td>
+            </tr>
+            <tr>
+              <td>TPMT</td>
+              <td>Toxic metabolite clearance</td>
+              <td>Azathioprine (poor metabolizer = toxicity)</td>
+            </tr>
+            <tr>
+              <td>DPYD</td>
+              <td>5-FU drug breakdown</td>
+              <td>Fluorouracil (poor metabolizer = critical toxicity)</td>
+            </tr>
+            <tr>
+              <td>SLCO1B1</td>
+              <td>Statin transporter</td>
+              <td>Simvastatin (reduced uptake = myopathy risk)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>1.3 User Journey (Be Able to Explain Step-by-Step)</h3>
+      <div class="code-block">
+1. User opens web app
+2. Uploads .vcf file (genomic data)
+3. Selects drugs to analyze (e.g., Warfarin, Clopidogrel)
+4. Backend validates file (extension, size, format)
+5. System calls Python analysis engine OR uses mock data
+6. Results displayed: risk label, gene profile, dosage guidance
+7. User can ask AI questions about results
+8. System logs analysis for history
+      </div>
+
+      <h3>1.4 Tech Stack (Memorize This)</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>Frontend</h4>
+          <ul>
+            <li>React.js</li>
+            <li>Vite</li>
+            <li>Tailwind CSS</li>
+            <li>React Router</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Backend</h4>
+          <ul>
+            <li>Node.js</li>
+            <li>Express.js</li>
+            <li>Multer</li>
+            <li>Axios</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top: 15px;">
+        <span class="badge">VCF Upload</span>
+        <span class="badge">JSON Reporting</span>
+        <span class="badge">REST API</span>
+        <span class="badge">Groq AI</span>
+        <span class="badge">Local Storage</span>
+        <span class="badge">Mock Fallback</span>
+      </div>
+    </div>
+
+    <!-- Section 3: Architecture -->
+    <div class="section">
+      <h2>🏗️ Part 2: Architecture (How It Works)</h2>
+
+      <h3>2.1 System Architecture Diagram</h3>
+      <div class="architecture">
+┌─────────────────────────────────────────────────────────┐
+│                 FRONTEND (React)                        │
+│  • Upload VCF file  • Select drugs  • Display results   │
+│  • Show AI chat     • Manage history                    │
+└──────────────────────┬──────────────────────────────────┘
+                       │ REST API
+                       ↓
+┌─────────────────────────────────────────────────────────┐
+│              BACKEND (Express)                          │
+│  • Validate VCF  • Parse drugs  • Forward to Python     │
+│  • Fallback data  • Logs  • Handle errors              │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+        ┌──────────────┴──────────────┐
+        ↓                             ↓
+  ┌────────────┐              ┌──────────────────┐
+  │  Python    │              │ mock_response.   │
+  │ ML Engine  │              │ json (fallback)  │
+  │ (Optional) │              │                  │
+  └────────────┘              └──────────────────┘
+      </div>
+
+      <h3>2.2 Data Flow - Step by Step</h3>
+      <p><strong>User Submits Form:</strong></p>
+      <div class="code-block">
+FormData = {
+  vcf_file: File object (.vcf)
+  drugs: "CLOPIDOGREL,WARFARIN,CODEINE"
+}
+POST /api/analyze
+      </div>
+
+      <p><strong>Backend Processing:</strong></p>
+      <ol>
+        <li>Check file exists</li>
+        <li>Verify extension is .vcf</li>
+        <li>Check file size ≤ 5MB</li>
+        <li>Parse drugs array from comma-separated string</li>
+        <li>Create patient payload with UUID</li>
+        <li>Try Python service if configured</li>
+        <li>On failure, use mock data</li>
+        <li>Save to logs/analysis_logs.json</li>
+        <li>Return JSON response</li>
+      </ol>
+
+      <h3>2.3 Key Backend Routes</h3>
+      <div class="code-block">
+// File: backend/routes/analyze.js
+POST /api/analyze
+- Accepts multipart/form-data
+- Uploads to /uploads folder
+- Returns drug analysis results
+- Saves to logs
+
+// File: backend/routes/chat.js
+POST /api/chat
+- Takes: { question, reports }
+- Calls Groq API with report context
+- Returns AI-powered answer
+
+// File: backend/server.js
+GET /api/logs - Retrieve analysis history
+DELETE /api/logs - Clear logs
+GET /health - Health check
+      </div>
+    </div>
+
+    <!-- Section 4: Implementation Details -->
+    <div class="section">
+      <h2>⚙️ Part 3: Key Implementation Details</h2>
+
+      <h3>3.1 File Upload Validation (Code Understanding)</h3>
+      <div class="success-box">
+        <strong>✓ Extension check (.vcf only)</strong><br>
+        Reason: Prevent accidental upload of wrong file type
+      </div>
+      <div class="success-box">
+        <strong>✓ File size limit (5MB)</strong><br>
+        Reason: VCF files are text, shouldn't be huge; prevents server overload
+      </div>
+      <div class="success-box">
+        <strong>✓ Readability check</strong><br>
+        Reason: File exists and backend can access it
+      </div>
+      <div class="success-box">
+        <strong>✓ Drug input validation</strong><br>
+        Reason: Empty drug list doesn't make sense
+      </div>
+
+      <h3>3.2 Python Backend Integration</h3>
+      <div class="code-block">
+// How it works:
+if (PYTHON_BACKEND_URL) {
+  Try to POST data to Python service
+  With timeout of 10 seconds
+  Retry up to 2 times if fails
+  If still fails, use mock data
+}
+
+// Environment variables to know:
+PYTHON_BACKEND_URL = "http://localhost:8000/analyze"
+PYTHON_VALIDATOR_URL = "http://localhost:8000/validate"
+FORWARD_TIMEOUT_MS = 10000
+FORWARD_RETRIES = 2
+      </div>
+
+      <h3>3.3 Mock Data Purpose</h3>
+      <ul>
+        <li>Contains 6 sample drug analyses</li>
+        <li>Used for demo when Python engine unavailable</li>
+        <li>Shows realistic clinical output format</li>
+        <li>Helps frontend testing without backend</li>
+        <li>Includes risk labels: "Ineffective", "Adjust Dosage", "Toxic"</li>
+      </ul>
+
+      <h3>3.4 AI Chat Integration (Groq)</h3>
+      <div class="code-block">
+// How chat works:
+1. User asks question about results
+2. System builds context from drug reports
+3. Sends to Groq API with system prompt
+4. Groq returns clinical explanation
+5. Frontend displays answer
+
+// Example system prompt:
+"You are PharmaGuard AI, clinical pharmacogenomics assistant.
+Answer ONLY based on these patient reports..."
+      </div>
+    </div>
+
+    <!-- Section 5: Frontend Understanding -->
+    <div class="section">
+      <h2>🎨 Part 4: Frontend Understanding</h2>
+
+      <h3>4.1 Main Component Structure</h3>
+      <div class="code-block">
+Frontend/
+├── src/
+│   ├── pages/
+│   │   └── Dashboard.jsx (Main interactive component)
+│   ├── components/
+│   │   ├── ResultsPanel (Shows drug analysis results)
+│   │   ├── Header (Top navigation)
+│   │   └── ... (Other UI components)
+│   ├── context/
+│   │   └── AnalysisContext.jsx (Global state management)
+│   ├── services/
+│   │   └── api.js (API communication)
+│   └── main.jsx (Entry point)
+      </div>
+
+      <h3>4.2 Dashboard.jsx - The Main Logic</h3>
+      <p><strong>What happens inside:</strong></p>
+      <ol>
+        <li><strong>File upload handling</strong> - Drag & drop, validation, error messages</li>
+        <li><strong>Drug selection</strong> - Pre-defined list or custom input</li>
+        <li><strong>Analysis submission</strong> - Sends FormData, shows loading</li>
+        <li><strong>Results display</strong> - Split screen layout</li>
+        <li><strong>Session management</strong> - Save/load/delete sessions</li>
+      </ol>
+
+      <h3>4.3 Important Features to Know</h3>
+      <div class="success-box">
+        <strong>✓ Drag & drop file upload</strong><br>
+        <strong>✓ Session history sidebar</strong><br>
+        <strong>✓ Real-time typing indicator during analysis</strong><br>
+        <strong>✓ Responsive split layout</strong><br>
+        <strong>✓ Dark theme UI (Tailwind)</strong><br>
+        <strong>✓ Toast notifications for errors</strong>
+      </div>
+    </div>
+
+    <!-- Section 5: Interview Questions -->
+    <div class="section">
+      <h2>❓ Part 5: Common Interview Questions & Perfect Answers</h2>
+
+      <h3>Q1: "Tell me about PharmaGuard in 2 minutes"</h3>
+      <div class="qa-block">
+        <strong>Perfect Answer:</strong>
+        <p>"PharmaGuard is a full-stack web application that analyzes how a patient's genetic profile affects drug safety. Users upload a VCF genomic file, select drugs they want to analyze, and the system returns personalized risk assessments. For example, if someone has a CYP2C19 poor metabolizer genotype, drugs like Clopidogrel won't work effectively, and the system flags this with a clinical recommendation to switch to an alternative.</p>
+        <p>The frontend is built with React and Vite for a modern user experience. The backend uses Express.js to validate files, forward requests to an ML analysis service, and handle logging. We also integrated Groq AI so users can ask follow-up questions about their results. It's designed as a prototype for educational and clinical research use."</p>
+      </div>
+
+      <h3>Q2: "What problem does PharmaGuard solve?"</h3>
+      <div class="qa-block">
+        <strong>Perfect Answer:</strong>
+        <p>"The core problem is that standard drug prescriptions ignore genetic differences. The same medicine can work differently for different people based on their genes. PharmaGuard solves this by making pharmacogenomics data easy to understand and actionable. Instead of a doctor guessing dosages, they can now see: 'This patient's genes show they metabolize Warfarin slowly, so reduce the dose by 30%.' This improves patient safety and treatment effectiveness."</p>
+      </div>
+
+      <h3>Q3: "Walk me through the user workflow"</h3>
+      <div class="qa-block">
+        <strong>Perfect Answer:</strong>
+        <p>1. User opens the app and sees a clean dashboard<br>
+        2. They upload their VCF file using drag-and-drop or file picker<br>
+        3. Backend validates: .vcf extension, file size under 5MB, file readability<br>
+        4. User selects drugs to analyze from a list or enters custom drug names<br>
+        5. They click 'Analyze'<br>
+        6. Frontend sends multipart form data to POST /api/analyze<br>
+        7. Backend attempts to call Python ML engine if configured<br>
+        8. If Python service fails, it uses mock response for demo<br>
+        9. Results displayed with risk for each drug<br>
+        10. User can ask AI chat questions and gets contextual answers<br>
+        11. Session is saved to localStorage for future reference</p>
+      </div>
+
+      <h3>Q4: "What's the difference between your frontend and backend?"</h3>
+      <div class="qa-block">
+        <strong>Perfect Answer:</strong>
+        <p><strong>Frontend (React):</strong><br>
+        • User interface, file upload, drug selection<br>
+        • Displays results beautifully<br>
+        • Manages session history<br>
+        • Handles AI chat UI<br><br>
+        <strong>Backend (Express):</strong><br>
+        • Validates VCF files (extension, size, format)<br>
+        • Parses and processes user input<br>
+        • Makes HTTP calls to Python service<br>
+        • Handles retry logic and fallback<br>
+        • Stores analysis logs<br>
+        • Provides REST API endpoints<br><br>
+        They communicate via REST API. Frontend sends multipart form data, backend responds with JSON.</p>
+      </div>
+
+      <h3>Q5: "Why did you choose React and Express?"</h3>
+      <div class="qa-block">
+        <strong>Perfect Answer:</strong>
+        <p>React is great for building interactive UIs with state management. The dashboard needs to handle multiple states: uploading, analyzing, showing results, switching between sessions. React Context makes this clean.</p>
+        <p>Express is lightweight and perfect for this API-heavy project. We need to handle file uploads (Multer), forward requests to external services (Axios), and manage retries. Express middleware makes this straightforward. Also, Node.js is non-blocking, which is good for handling multiple concurrent analysis requests.</p>
+      </div>
+
+      <h3>Q6: "How does file validation work? Why is it important?"</h3>
+      <div class="qa-block">
+        <strong>Perfect Answer:</strong>
+        <p>File validation happens in multiple steps:</p>
+        <ol>
+          <li>Check extension is .vcf (not .txt, .doc, etc)</li>
+          <li>Check file size ≤ 5MB (VCF should be reasonable size)</li>
+          <li>Verify file is readable from disk</li>
+        </ol>
+        <p><strong>Why it's important:</strong> Genomic data is sensitive and must be valid. A corrupted or wrong file could lead to incorrect analysis, which is dangerous in a clinical context. We also reject if drugs field is empty—no point analyzing without knowing which drugs.</p>
+      </div>
+
+      <h3>Q7: "What happens if the Python backend is down?"</h3>
+      <div class="qa-block">
+        <strong>Perfect Answer:</strong>
+        <p>Good question. We have a fallback mechanism:</p>
+        <ol>
+          <li>Backend tries to call Python service with 10-second timeout</li>
+          <li>If it fails, it retries up to 2 more times with exponential backoff</li>
+          <li>If all retries fail, it returns mock_response.json instead</li>
+        </ol>
+        <p>So the app never crashes—it gracefully degrades to demo mode. This is why we can run it without a Python service for prototyping.</p>
+      </div>
+
+      <h3>Q8: "How does the AI chat work?"</h3>
+      <div class="qa-block">
+        <strong>Perfect Answer:</strong>
+        <p>The chat uses Groq API, which is a fast LLM service. Here's the flow:</p>
+        <ol>
+          <li>User types a question about analysis results</li>
+          <li>We send to /api/chat with { question, reports }</li>
+          <li>Backend builds context string from drug reports</li>
+          <li>Sends to Groq with system prompt saying 'Only answer based on these reports'</li>
+          <li>Groq returns text answer</li>
+          <li>Frontend displays it in chat panel</li>
+        </ol>
+        <p>This grounds the AI in actual data, so it doesn't hallucinate.</p>
+      </div>
+
+      <h3>Q9: "What are the limitations of your project?"</h3>
+      <div class="qa-block">
+        <strong>Perfect Answer:</strong>
+        <p>Being honest about limitations shows maturity:</p>
+        <ol>
+          <li>It's a prototype/demo—not FDA-approved clinical software</li>
+          <li>Real variant interpretation requires a serious ML model</li>
+          <li>Uses mock data for demo purposes</li>
+          <li>No user authentication yet—needed for HIPAA compliance</li>
+          <li>Limited to pre-defined drugs</li>
+          <li>VCF parsing is basic—clinical-grade parsing is more complex</li>
+        </ol>
+        <p>These aren't bugs; they're conscious design choices for a hackathon/prototype.</p>
+      </div>
+
+      <h3>Q10: "How would you improve this project?"</h3>
+      <div class="qa-block">
+        <strong>Perfect Answer:</strong>
+        <p>If I had more time:</p>
+        <ol>
+          <li>Build real VCF parsing using Python+bioinformatics libraries</li>
+          <li>Integrate CPIC guidelines</li>
+          <li>Add user authentication & patient profiles</li>
+          <li>Build admin dashboard for clinicians</li>
+          <li>Add database (PostgreSQL) for persistent histories</li>
+          <li>Deploy to cloud with HIPAA compliance</li>
+          <li>Create mobile app version</li>
+          <li>Add medical advisor review process</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Section 6: Quick Reference -->
+    <div class="section">
+      <h2>🚀 Part 6: Quick Reference Cheat Sheet</h2>
+
+      <h3>Must Remember</h3>
+      <ul>
+        <li><strong>Tech:</strong> React + Express + Node.js</li>
+        <li><strong>File Type:</strong> VCF genomic data</li>
+        <li><strong>Max File Size:</strong> 5MB</li>
+        <li><strong>Key Genes:</strong> CYP2C19, CYP2C9, CYP2D6, TPMT, DPYD, SLCO1B1</li>
+        <li><strong>Risk Labels:</strong> "Ineffective", "Adjust Dosage", "Toxic"</li>
+      </ul>
+
+      <h3>File Paths to Know</h3>
+      <ul>
+        <li><code>backend/server.js</code> - Main server</li>
+        <li><code>backend/routes/analyze.js</code> - Drug analysis API</li>
+        <li><code>backend/routes/chat.js</code> - AI chat API</li>
+        <li><code>backend/mock_response.json</code> - Demo data</li>
+        <li><code>frontend/src/pages/Dashboard.jsx</code> - Main UI</li>
+        <li><code>frontend/src/context/AnalysisContext.jsx</code> - Global state</li>
+      </ul>
+
+      <h3>API Endpoints</h3>
+      <ul>
+        <li><code>POST /api/analyze</code> - Main analysis</li>
+        <li><code>POST /api/chat</code> - AI questions</li>
+        <li><code>GET /api/logs</code> - Analysis history</li>
+        <li><code>GET /health</code> - Health check</li>
+      </ul>
+    </div>
+
+    <!-- Section 7: Explanation Scenarios -->
+    <div class="section">
+      <h2>💬 Part 7: How to Explain in Different Scenarios</h2>
+
+      <h3>In 30 Seconds (Elevator Pitch)</h3>
+      <div class="quick-box">
+        "PharmaGuard analyzes how patient genes affect drug safety. Upload VCF file, select drugs, get personalized risk report with AI-powered explanation."
+      </div>
+
+      <h3>In 2 Minutes (Quick Interview)</h3>
+      <div class="quick-box">
+        [Use Q1 answer from previous section]
+      </div>
+
+      <h3>In 5 Minutes (Technical Interview)</h3>
+      <div class="quick-box">
+        Start with problem → solution → tech stack → architecture → key features → demo workflow
+      </div>
+
+      <h3>In 10 Minutes (Deep Dive)</h3>
+      <div class="quick-box">
+        Add: implementation details, challenges overcome, limitations, future improvements
+      </div>
+    </div>
+
+    <!-- Section 8: Final Tips -->
+    <div class="section">
+      <h2>✨ Part 8: Final Interview Tips</h2>
+
+      <div class="tips-section">
+        <h3>✅ DO:</h3>
+        <ul>
+          <li>Speak clearly about the problem it solves</li>
+          <li>Use real examples (CYP2C19 + Clopidogrel)</li>
+          <li>Explain architecture with confidence</li>
+          <li>Admit limitations honestly</li>
+          <li>Show enthusiasm for healthcare tech</li>
+        </ul>
+      </div>
+
+      <div class="tips-section">
+        <h3>❌ DON'T:</h3>
+        <ul>
+          <li>Overcomplicate technical explanations</li>
+          <li>Make up features that don't exist</li>
+          <li>Claim it's production-ready (it's not)</li>
+          <li>Forget to mention why each technology was chosen</li>
+          <li>Be defensive about limitations</li>
+        </ul>
+      </div>
+
+      <div class="tips-section">
+        <h3>🎯 PRACTICE:</h3>
+        <ul>
+          <li>Explain the workflow 3 times smoothly</li>
+          <li>Be ready to draw architecture on whiteboard</li>
+          <li>Practice 30-second, 2-minute, 5-minute versions</li>
+          <li>Know the code paths in analyze.js and Dashboard.jsx</li>
+          <li>Be ready to defend tech choices</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <h3>🎓 Good luck! You got this! 🚀</h3>
+      <p>Remember: Be confident, be honest, and show genuine passion for the project.</p>
+      <p style="margin-top: 20px; font-size: 0.9em; color: #94a3b8;">
+        PharmaGuard Interview Guide | Last Updated: 2024
+      </p>
+      <button class="download-btn" onclick="window.print()">
+        📥 Print/Save as PDF
+      </button>
+    </div>
+  </div>
+</body>
+</html>
